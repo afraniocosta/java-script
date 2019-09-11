@@ -358,7 +358,8 @@ window
 /*
 
 arguments e this são os parâmetros implícitos que o Javascript atribui quando a função é invocada. 
-O parâmetro arguments é um objeto com todos os argumentos que a função recebeu no momento em que foi invocada. O this é o contexto em que a função foi chamada.
+O parâmetro arguments é um objeto com todos os argumentos que a função recebeu no momento em que foi invocada. 
+O this é o contexto em que a função foi chamada.
 
 Podemos utilizar o arguments quando não sabemos quantos argumentos vamos receber quando a função for invocada. 
 É o mesmo propósito do rest parameter, só que este só está disponível no ES6, se você não tem como utilizar ES6 em seu projeto arguments resolve o seu problema.
