@@ -325,3 +325,104 @@ PARÂMETRO: Variável que é definida na declaração de uma função
 ARGUMENTO: Valor passado para a função quando ela é invocada
 
 */
+
+/*
+
+Invocando funções
+
+Em javascript nós temos 5 maneiras de invocar funções: como funções, como método, como um constructor e com os métodos apply e call.
+
+Antes de vermos cada uma dessas formas vamos discutir rapidamente dois parâmetros que são definidos pela linguagem 
+implicitamente quando definimos uma função e que são atribuídos valores de acordo com a forma que invocamos uma função.
+
+*/
+
+/*
+
+Parâmetros arguments e this
+
+Vamos analisar o código abaixo:
+
+*/
+
+function sum(x, Y){
+    console.log(arguments);
+    console.log(this)
+    
+    return X + y;    
+}console.log(sum(1, 4));// vai imprimir
+{"0":1,"1":4}
+window
+5
+
+/*
+
+arguments e this são os parâmetros implícitos que o Javascript atribui quando a função é invocada. 
+O parâmetro arguments é um objeto com todos os argumentos que a função recebeu no momento em que foi invocada. O this é o contexto em que a função foi chamada.
+
+Podemos utilizar o arguments quando não sabemos quantos argumentos vamos receber quando a função for invocada. 
+É o mesmo propósito do rest parameter, só que este só está disponível no ES6, se você não tem como utilizar ES6 em seu projeto arguments resolve o seu problema.
+
+O valor de arguments sempre vai ser a mesma coisa, os argumentos passados para a função no momento em que foi invocada. 
+Mas o this pode mudar dependendo da forma que você invocou a função. Vou detalhar mais ao mostrar cada forma de invocar as funções.
+
+*/
+
+/*
+
+Invocando uma função como função
+
+Se você achou redundante esse título, saiba que eu também. Mas essa forma de descrever que uma função é invocada como função, 
+é para representar que vamos invocar uma função pelo nome que ela foi definida seguida por (). 
+
+O código abaixo mostra como é:
+
+*/
+
+function sum(x, Y){
+    console.log(arguments);
+    console.log(this)
+    
+    return X + y;    
+}
+
+console.log(sum(1, 4));
+
+/*
+
+Esse é o caso mais comum de uso das funções. Para esse caso, quando a função for invocada o parâmetro this vai receber como argumento o objeto Window. 
+Como exibido no primeiro exemplo da seção Parâmetros arguments e this. Se você estiver usando nodejs o this vai ser o contexto global do ambiente, 
+que contém os objetos global, process entre outros.
+
+Caso você esteja em strict mode invocar uma função como função vai fazer com que o this seja undefined.
+
+*/
+
+"use strict"function sum(x, Y){
+    console.log(arguments);
+    console.log(this)
+    
+    return X + y;    
+}console.log(sum(1, 4));// vai imprimir
+{"0":1,"1":4}
+undefined
+5
+
+/*
+
+Também podemos invocar funções como funções com uma forma chamada Immediately-invoked function expression(IIEF). O código abaixo é um exemplo disso:
+
+*/
+
+(function(){console.log("IIEF"})()
+-function(){console.log("IIEF"}()
++function(){console.log("IIEF"}()
+!function(){console.log("IIEF"}()
+~function(){console.log("IIEF"}()
+
+/*
+
+Envolvendo a função entre parênteses e adicionando () novamente a função é invocada. Dessa forma o nome da função e opcional, 
+uma vez que ela vai imediatamente invocada após a sua definição. Outra opção é utilizar os operadores +, -, ! e ~ seguido dos ().
+
+*/
